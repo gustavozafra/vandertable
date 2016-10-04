@@ -14,7 +14,7 @@
             'color': '#167F92',
             'onMoveCol': function() {},
             'onMoveRow': function() {}
-        };
+        }; 
 
         // Geração das settings do seu plugin
         var settings = $.extend({}, defaults, options);
