@@ -35,7 +35,7 @@
             if (settings.showRowOrder) {
                 $(this).find('thead > tr:first').prepend('<th style="background-color:  ' + settings.color + '" class="orderControl">#</th>');
                 $(this).find("tbody > tr").each(function() {
-                    //nesse caso o this são as trs
+                    //nesse caso o this são as trs	
                     var count = $(this).parent().children().index($(this)) + 1;
                     $(this).prepend('<td class="orderControl tableOrder">' + count + '</td>');
                 });
@@ -70,22 +70,18 @@
             }
 
             function ReordenarItensColSwap($table, oldPosition, newPosition) {
-                //
+                //	
                 $table.find("tbody tr").each(function() {
-                    var $tr = $(this);
-                    var $oldCell = $tr.children('td:eq( ' + oldPosition + ' )');
-                    var $newCell = $tr.children('td:eq( ' + newPosition + ' )');
-                    //  
+					//
+                    var $elemToMove = $(this).children('td:eq( ' + oldPosition + ' )');
+					var $elemInNewPos = $(this).children('td:eq( ' + newPosition + ' )');
 
-                    var $tmpOld = $oldCell.clone();
-                    var $tmpNew = $newCell.clone();
-
-                    $oldCell.after($tmpNew);
-                    $newCell.after($tmpOld);
-
-                    $oldCell.remove();
-                    $newCell.remove();
-
+					if(oldPosition > newPosition){
+						$elemToMove.insertBefore($elemInNewPos);
+					}
+					else{
+						$elemToMove.insertAfter($elemInNewPos);
+					}
                 });
             }
 
